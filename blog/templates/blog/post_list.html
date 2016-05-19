@@ -7,7 +7,7 @@
 	    		{{ post.published_date }}
 	        </div>
 	        <h1><a href="{% url 'blog.views.post_detail' slug=post.slug %}">{{ post.title }}</a></h1>
-		    <p>{{ post.text|linebreaks|truncatechars:400 }}</p>
+		    <p>{{ post.text|safe|linebreaks|truncatechars:400 }}</p>
 		</div>
 	{% endfor %}
 
