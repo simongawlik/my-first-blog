@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <html>
 	<head>
-		<title>Simon's blog</title>
+		<title>Simon's Website</title>
 
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -9,7 +9,64 @@
         <link href="http://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" type="text/css">
 	</head>
 	<body>
-		<div class="page-header">
+		<div class="container">
+
+            <!-- Static navbar -->
+            <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                <a class="navbar-brand" href="{% url 'mysite.views.home' %}">Simon Gawlik</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                  <li><a href="{% url 'mysite.views.home' %}">About</a></li>
+                  <li><a href="{% url 'blog.views.post_list' %}">Blog</a></li>
+                </ul>
+                
+                {% if user.is_authenticated %}
+                
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a></li>
+                        <li><a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a></li>
+                    </ul>
+
+                {% else %}
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                    </ul>
+
+                {% endif %}
+
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+            </nav>
+
+            {% if user.is_authenticated %}
+                <div class="auth">
+                    <p>{{ user.username }}<small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)</small></p>
+                </div>
+            {% endif %}
+
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
+                </div>
+            </div>
+
+        </div> <!-- /container -->
+
+
+<!--         <div class="page-header">
         	{% if user.is_authenticated %}
         		<div class="auth">
                     <p>{{ user.username }}<small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)</small></p>
@@ -20,15 +77,18 @@
         	{% else %}
                 <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
             {% endif %}
-        	<h1><a href="{% url 'blog.views.post_list' %}">Simon's Blog</a></h1>
-    	</div>
-    	<div class="content container">
-        	<div class="row">
-            	<div class="col-md-8">
- 	           	{% block content %}
-    	        {% endblock %}
-        	    </div>
-        	</div>
-    	</div>
+            <div class="nav-bar">
+                <h1><a href="{% url 'mysite.views.home' %}">Simon Gawlik</a></h1>
+                <a href="{% url 'mysite.views.home' %}" class="nav-menu">About</a>
+                <a href="{% url 'mysite.views.home' %}" class="nav-menu">Blog</a>
+            </div>
+    	</div> -->
+    
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 	</body>
 </html>

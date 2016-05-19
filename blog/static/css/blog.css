@@ -1,16 +1,18 @@
 .page-header {
     background-color: #4ABDAC;
     margin-top: 0;
-    padding: 20px 20px 20px 40px;
+    padding: 30px 20px 20px 40px;
 }
 
 .page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    display: inline;
     color: #ffffff;
     font-size: 36pt;
     text-decoration: none;
 }
 
 .content {
+    clear: both;
     margin-left: 40px;
     margin-right: 40px;
 }
@@ -35,8 +37,21 @@ h1, h2, h3, h4 {
 .top-menu, .top-menu:hover, .top-menu:visited {
     color: #DFDCE3;
     float: right;
-    font-size: 26pt;
-    margin-right: 20px;
+    font-size: 15pt;
+    margin-right: 10px;
+}
+
+.navbar-brand {
+    font-family: 'Special Elite';
+    font-size: 2.72em;
+}
+
+.navbar-toggle {
+    margin-bottom: 20px;
+}
+
+.container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
+    margin-top: 18px;
 }
 
 .post {
