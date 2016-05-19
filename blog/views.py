@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
 
@@ -8,7 +10,26 @@ from .models import Post
 # Create your views here.
 def post_list(request):
 	posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
-	return render(request, 'blog/post_list.html', {'posts': posts})
+	query = request.GET.get("q")
+	if query:
+		posts = posts.filter(
+			Q(title__icontains=query) |
+			Q(body__icontains=query) |
+			Q(user__first_name__icontains=query) |
+			Q(user__last_name__icontains=query)
+			).distinct()
+	paginator = Paginator(posts, 4) # Show 4 blog entries per page
+	page_request_var = 'page'
+	page = request.GET.get(page_request_var)
+	try:
+		queryset = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		queryset = paginator.page(1)
+	except EmptyPage:
+		# If page is out of range (e.g. 9999), deliver last page of results.
+		queryset = paginator.page(paginator.num_pages)
+	return render(request, 'blog/post_list.html', {'posts': queryset, 'page_request_var': page_request_var})
 
 def post_detail(request, slug):
 	post = get_object_or_404(Post, slug=slug)
