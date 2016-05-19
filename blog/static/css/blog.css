@@ -19,7 +19,8 @@ h1, h2, h3, h4 {
 }
 
 .date {
-    color: #40E0D0; /*828282;*/
+    color: #828282;
+    float: right;
 }
 
 .save {
@@ -43,4 +44,21 @@ h1, h2, h3, h4 {
 
 .post h1 a, .post h1 a:visited {
     color: #000000;
+}
+
+.action-btn {
+    float: right;
+}
+
+.btn {
+    float: left;
+    margin-left: 5px;
+}
+
+.gi-md {
+    font-size: 1.45em;
+}
+
+.auth {
+    float: right;
 }
