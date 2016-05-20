@@ -7,13 +7,13 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
         <link href="http://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 	</head>
 	<body>
-		<div class="container">
 
-            <!-- Static navbar -->
-            <nav class="navbar navbar-default">
-            <div class="container-fluid">
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
@@ -46,24 +46,36 @@
 
                 </div><!--/.nav-collapse -->
             </div><!--/.container-fluid -->
-            </nav>
+        </nav>
 
+        
+
+        <div class="content container">
             {% if user.is_authenticated %}
                 <div class="auth">
                     <p>{{ user.username }}<small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)</small></p>
                 </div>
             {% endif %}
 
-            <div class="content container-fluid">
-                <div class="row">
-                    <div class="col-md-8">
-                    {% block content %}
-                    {% endblock %}
-                    </div>
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
                 </div>
             </div>
+        </div>
 
-        </div> <!-- /container -->
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">&copy Simon Gawlik 2016. Made with Django/Bootstrap3. Find me here: 
+                <a href="https://github.com/simongawlik"><i class="fa fa-github-square"></i></a>
+                <a href="http://www.linkedin.com/pub/simon-gawlik/57/784/138"><i class="fa fa-linkedin-square"></i>
+                <a href="https://twitter.com/sgawi"><i class="fa fa-twitter-square"></i></a>
+                <a href="https://www.facebook.com/simon.gawlik"><i class="fa fa-facebook-square"></i></a>
+                </p>
+            </div>
+        </footer>
+
 
 
 <!--         <div class="page-header">

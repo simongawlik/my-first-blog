@@ -46,8 +46,39 @@ h1, h2, h3, h4 {
     font-size: 2.72em;
 }
 
+.navbar-default {
+    border-radius: 0px;
+    background-image: -webkit-linear-gradient(top,#4484ce 0,#4484ce 100%);
+    background-image: -o-linear-gradient(top,#4484ce 0,#4484ce 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#4484ce),to(#4484ce));
+    background-image: linear-gradient(to bottom,#4484ce 0,#4484ce 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff4484ce', endColorstr='#ff4484ce', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
+    color: #f19f4d;
+}
+
+.navbar {
+    border: 0px;
+}
+
 .navbar-toggle {
     margin-bottom: 20px;
+    background-color: #d9d9d9;
 }
 
 .container>.navbar-header, .container-fluid>.navbar-header, .container>.navbar-collapse, .container-fluid>.navbar-collapse {
@@ -87,4 +118,54 @@ img.left {
 img.right {
     float: right;
     margin: 10px;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 65px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 65px;
+  background-color: #d9d9d9;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+  padding: 0px 15px 0;
+}
+.container .text-muted {
+  margin: 10px 0px;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+.footer i {
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.footer a:hover {
+    color: #f19f4d;
 }
