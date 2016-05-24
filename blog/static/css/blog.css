@@ -166,6 +166,6 @@ code {
     margin-left: 5px;
 }
 
-.footer a:hover {
+a:hover i {
     color: #f19f4d;
 }
